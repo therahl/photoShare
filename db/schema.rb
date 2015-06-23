@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623211028) do
+ActiveRecord::Schema.define(version: 20150623214853) do
 
   create_table "albums", force: :cascade do |t|
-    t.string "title"
-    t.text   "description"
+    t.string  "title"
+    t.text    "description"
+    t.boolean "public",      default: true
   end
 
   create_table "comments", force: :cascade do |t|
