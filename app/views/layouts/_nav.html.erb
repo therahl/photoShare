@@ -7,17 +7,30 @@
                        PhotoShare
                    </a>
                </li>
+              <% if signed_in? %>
                <li>
-                   <a href="<%= root_path %>">Dashboard</a>
+                   <a href="<%= current_user %>">Dashboard</a>
                </li>
                <li>
                    <a href="<%= root_path %>">My Albums</a>
                </li>
                <li>
-                   <a href="<%= albums_path %>">Explore</a>
+                   <a href="<%= new_album_path %>">New Album</a>
                </li>
                <li>
-                   <a href="<%= new_album_path %>">New Album</a>
+                   <%= link_to 'Sign Out', logout_path, method: :delete %>
+               </li>
+              <% else %>
+              <li>
+                  <a href="<%= login_path %>">Log In</a>
+              </li>
+              <li>
+                  <a href="<%= new_user_path %>">Sign Up</a>
+              </li>
+
+              <% end %>
+               <li>
+                   <a href="<%= albums_path %>">Explore</a>
                </li>
 
            </ul>
