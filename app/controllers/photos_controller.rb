@@ -4,7 +4,8 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @album = Album.find(params[:album_id])
+    @photos = @album.photos.all
   end
 
   # GET /photos/1
@@ -14,7 +15,8 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.new(photo_params)
   end
 
   # GET /photos/1/edit
@@ -24,11 +26,13 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.new(photo_params)
+    # @photos = @album.photos.all
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to :action=> :index, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to :action=> :index, notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to :action=> :index, notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +68,12 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find(params[:id])
+      @album = Album.find(params[:album_id])
+      @photo = @album.photos.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params[:photo]
+      params.require(:photo).permit(:title, :description, :featured, :image) if params[:photo]
     end
 end
