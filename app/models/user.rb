@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # before_save { self.email = email.downcase }
   # before_save { self.username = username.downcase }
-  
+
   has_many :albums
   has_many :comments
 
@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   #           uniqueness: { case_sensitive: false }
   # validates :password, length: { minimum: 6 }
   #
+
 end
