@@ -15,7 +15,7 @@
         <td><%= image_tag photo.image.url(:medium) %> </td>
         <td><%= link_to 'Show', album_photo_path(id: photo) %></td>
         <td><%= link_to 'Edit', edit_album_photo_path(id: photo) %></td>
-        <td><%= link_to 'Destroy', album_photo_path(id: photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', album_photo_path(id: photo), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

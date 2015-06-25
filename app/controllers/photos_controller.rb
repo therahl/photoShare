@@ -17,6 +17,8 @@ class PhotosController < ApplicationController
   def new
     @album = Album.find(params[:album_id])
     @photo = @album.photos.new(photo_params)
+    @photos = @album.photos.all
+
   end
 
   # GET /photos/1/edit
@@ -28,16 +30,17 @@ class PhotosController < ApplicationController
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.new(photo_params)
-    # @photos = @album.photos.all
 
-    respond_to do |format|
+    # respond_to do |format|
       if @photo.save
-        format.html { redirect_to :action=> :index, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
+        render json: { message: "success", fileID: @photo.id }, status: 200
+        # format.html { redirect_to :action=> :index, notice: 'Photo was successfully created.' }
+        # format.json { render :show, status: :created, location: @photo }
       else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+        render json: { error: @photo.errors.full_messages.join(',')}, status: 400
+        # format.html { render :new }
+        # format.json { render json: @photo.errors, status: :unprocessable_entity }
+      # end
     end
   end
 
