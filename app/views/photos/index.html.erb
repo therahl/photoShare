@@ -1,21 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Photos</h1>
+<%= link_to 'Add Photos', new_album_photo_path %>
 <div class="grid">
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+<div id="masonry-container" class="transitions-enabled centered clearfix masonry">
 
 
   <% @photos.each do |photo| %>
 
-        <div class="pic has-gutters">
-          <%= image_tag photo.image.url(:medium), class: "img-responsive" %>
-         <p>
-            <%= link_to 'Show', album_photo_path(id: photo) %>
-            <%= link_to 'Edit', edit_album_photo_path(id: photo) %>
-            <%= link_to 'Destroy', album_photo_path(id: photo), method: :delete %>
-         </p>
+        <div class="pic has-gutters col<%= rand(1...5) %>">
+            <%= link_to album_photo_path(id: photo) do %>
+              <%= image_tag photo.image.url(:large), class: "img-responsive" %>
+            <% end %>
+            <span class="remove"><%= link_to 'X', album_photo_path(id: photo), method: :delete %></span>
+            <% if photo.title || photo.description %><span class="clickme title"><%= photo.title %></span><% end %>
+            <div class="info">
+              <span class="description"><%= simple_format(photo.description) %></span>
+            </div>
         </div>
     <% end %>
 </div>
   <p class="test"></p>
-<%= link_to 'Add Photos', new_album_photo_path %>

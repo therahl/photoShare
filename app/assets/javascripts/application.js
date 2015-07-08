@@ -38,10 +38,5 @@ $(document).ready(function(){
 
 
 
-});
 
-$('#masonry-container').masonry({
-    itemSelector: '.pic',
-    columnWidth: 100,
-    gutterWidth: 40
-})
+});
