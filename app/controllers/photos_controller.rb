@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @album = Album.find(params[:album_id])
+    @photo = @album.photos.new(photo_params)
     @photos = @album.photos.all
   end
 

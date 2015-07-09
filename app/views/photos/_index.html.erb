@@ -1,5 +1,15 @@
-<% @photos.each do |image| %>
-  <div class="img-thumbnail">
-    <%= image_tag image.image.url(:thumb), alt: image.image.url(:thumb) %>
-  </div>
-<% end %>
+<% @photos.order("image_updated_at desc").limit(20).each do |photo| %>
+
+      <div class="brick pic has-gutters col<%= rand(1...5) %>">
+
+            <%= image_tag photo.image.url(:full), class: "img-responsive" %>
+          <div class="remove">
+            <span style="float: right; padding-right: 5px;"><%= link_to 'X', album_photo_path(id: photo), method: :delete %></span>
+            <span style="float: left; padding-left: 5px;"><%= link_to 'Edit', edit_album_photo_path(id: photo)%></span>
+          </div>
+          <% if photo.title || photo.description %><span class="clickme title"><%= photo.title %></span><% end %>
+          <div class="info">
+            <span class="description"><%= simple_format(photo.description) %></span>
+          </div>
+      </div>
+  <% end %>

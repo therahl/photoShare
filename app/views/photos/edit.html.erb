@@ -1,4 +1,6 @@
 <h1>Editing Photo</h1>
+<%= image_tag @photo.image.url(:large) %>
+
 <p>
   Photo ID: <%= @photo.id %>
 </p>
@@ -9,5 +11,4 @@
   <%= f.button :submit, "Submit", class: "btn btn-normal" %>
 <% end %>
 
-<%= link_to 'Show', album_photo_path %>
 <%= link_to 'Back', :back %>
