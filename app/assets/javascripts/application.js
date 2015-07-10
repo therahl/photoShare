@@ -28,7 +28,7 @@ $(document).ready(function(){
 
   $.fn.editable.defaults.mode = 'inline';
   $('.title').editable();
-  $('.description').editable({rows: 10});
+  $('.description').editable();
 
   $('a.info').click(function(e){
     e.preventDefault();
