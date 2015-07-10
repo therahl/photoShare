@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Your Stories</h1>
-
+<hr>
 <table>
   <thead>
     <tr>
@@ -16,13 +16,21 @@
         <tr>
           <a href="<%= album_photos_path(album) %>">
             <% unless album.photos.empty? %>
-            <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
+              <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
             <% end %>
           </a>
         </tr>
+        <tr>
+          <h3><%= album.title %></h3>
+        </tr>
+        <tr>
+          <p>
+            <%= album.description %>
+          </p>
+        </tr>
       <tr>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
