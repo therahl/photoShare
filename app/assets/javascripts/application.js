@@ -27,9 +27,12 @@ $(document).ready(function(){
   // disable auto discover
 
   $.fn.editable.defaults.mode = 'inline';
-  $('#title').editable();
-  $('#description').editable();
+  $('.title').editable();
+  $('.description').editable({rows: 10});
 
+  $('a.info').click(function(e){
+    e.preventDefault();
+  });
 
 
 });

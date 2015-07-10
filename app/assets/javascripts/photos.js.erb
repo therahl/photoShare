@@ -26,9 +26,9 @@ $(document).imagesLoaded( function() {
     });
 
 
-    $grid.on( 'click', '.pic', function() {
-      $(this).children('.info').toggle();
-      $(this).closest('.brick').toggleClass('enlarge');
+    $grid.on( 'click', 'img', function() {
+      $(this).parent().children('.info').toggle();
+      $(this).toggleClass('enlarge');
       $grid.isotope();
     });
 });
