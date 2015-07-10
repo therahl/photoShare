@@ -1,2 +1,13 @@
 $("#masonry-container").html("<%= escape_javascript(render('index')) %>");
 $(".add-photos").toggleClass('hidden');
+$('#add-photos').show();
+
+$('.info').hide();
+$('.remove').hide();
+
+
+$('.pic').hover(function(){
+    $(this).children('.remove').show();
+  },function(){
+    $('.remove').hide();
+})

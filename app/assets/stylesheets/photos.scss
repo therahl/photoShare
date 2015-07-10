@@ -61,7 +61,7 @@
 }
 .pic {
   float:left;
-
+  position: relative;
   // float: left;
   img {
       display: block;
@@ -86,7 +86,6 @@
 .remove:hover {
   opacity: 1;
   background-color: aliceblue;
-  font-weight: bold;
 }
 
 #masonry-container {

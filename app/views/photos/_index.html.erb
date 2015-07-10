@@ -9,6 +9,8 @@
           </div>
           <% if photo.title || photo.description %><span class="clickme title"><%= photo.title %></span><% end %>
           <div class="info">
+            <a href="#" id="title" data-type="text" data-resource="post" data-name="title" data-url="<%= edit_album_photo_path(id: photo) %>" data-original-title="Enter Title"><%= photo.title %></a>
+
             <span class="description"><%= simple_format(photo.description) %></span>
           </div>
       </div>

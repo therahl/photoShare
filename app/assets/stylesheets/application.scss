@@ -18,9 +18,12 @@
  @import 'masonry/infinitescroll';
  @import 'masonry/right-to-left';
  @import "masonry/transitions";
+ @import "isotope";
  @import "dropzone/dropzone";
  @import "bootstrap-sprockets";
  @import "photos";
+ @import "bootstrap-editable";
+
 
  $bootstrap-sass-asset-helper: false !default;
 //

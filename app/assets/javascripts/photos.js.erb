@@ -1,11 +1,13 @@
 
 $('#add-photos').click(function(){
   $('.add-photos').toggleClass('hidden');
+  $(this).hide();
 })
 
 
 $('.info').hide();
 $('.remove').hide();
+
 $('.pic').hover(function(){
     $(this).children('.remove').show();
   },function(){
@@ -17,7 +19,7 @@ $(document).imagesLoaded( function() {
   var $grid = $('#masonry-container').isotope({
         itemSelector: '.brick',
         // columnWidth: 200,
-        layoutMode: 'packery',
+        // layoutMode: 'packery',
         // gutterWidth: 10,
         isAnimated: !Modernizr.csstransitions,
         isFitWidth: true
@@ -27,7 +29,7 @@ $(document).imagesLoaded( function() {
     $grid.on( 'click', '.pic', function() {
       $(this).children('.info').toggle();
       $(this).closest('.brick').toggleClass('enlarge');
-      $grid.masonry();
+      $grid.isotope();
     });
 });
 
@@ -44,7 +46,7 @@ dropzone.on("success", function(file) {
   this.removeFile(file);
   $.getScript("./photos/");
   $(document).imagesLoaded( function() {
-    var $grid = $('#masonry-container').masonry({
+    var $grid = $('#masonry-container').isotope({
           itemSelector: '.brick',
           columnWidth: 200,
           // gutterWidth: 10,
@@ -56,7 +58,7 @@ dropzone.on("success", function(file) {
       $grid.on( 'click', '.pic', function() {
         $(this).children('.info').toggle();
         $(this).closest('.brick').toggleClass('enlarge');
-        $grid.masonry();
+        $grid.isotope();
       });
   });
 });

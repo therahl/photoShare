@@ -4,7 +4,10 @@
 <p>
   Photo ID: <%= @photo.id %>
 </p>
-
+<a href="#" id="title" data-type="text" data-resource="post" data-name="title" data-url="<%= album_photo_path %>" class="editable editable-click" data-original-title="Enter Title"><%= @photo.title %></a>
+<a href="#" id="description" data-type="textarea" data-resource="post" data-name="description" class="editable editable-click" data-url="<%= album_photo_path %>" data-original-title="Enter body">
+  <%= textarea_format(@photo.description) %>
+</a>
 <%= simple_form_for [@album, @photo] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
