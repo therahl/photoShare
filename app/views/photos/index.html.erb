@@ -1,7 +1,12 @@
 
-<h1>Album Photos</h1>
+<h1>Your Story</h1><hr>
+<h3><%= @album.title %></h3>
+<p>
+  <%= @album.description %>
+</p>
+<hr>
 
-<button type="btn btn-primary" name="button" id="add-photos">Add Photos</button>
+<button type="btn btn-success" name="button" id="add-photos">Add Photos</button>
 <div class="add-photos hidden">
   <%= render 'form' %>
 </div>

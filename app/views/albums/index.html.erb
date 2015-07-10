@@ -1,7 +1,7 @@
-<% provide :title, 'Albums' %>
+<% provide :title, 'Stories' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Albums</h1>
+<h1>Your Stories</h1>
 
 <table>
   <thead>
@@ -12,8 +12,15 @@
 
   <tbody>
     <% @albums.each do |album| %>
+
+        <tr>
+          <a href="<%= album_photos_path(album) %>">
+            <% unless album.photos.empty? %>
+            <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
+            <% end %>
+          </a>
+        </tr>
       <tr>
-        <td><%= link_to 'Show', album_photos_path(album) %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -23,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<%= link_to 'New Story', new_album_path, class: "btn btn-success" %>
