@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @album = Album.find(params[:album_id])
+    @photo = @album.photos.new(photo_params)
     @photos = @album.photos.all
   end
 
@@ -48,9 +49,9 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1.json
   def update
     respond_to do |format|
-      if @photo.update(photo_params)
+      if @photo.update_attributes(photo_params)
         format.html { redirect_to :action=> :index, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @photo }
+        format.json { render :index, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @photo.errors, status: :unprocessable_entity }

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require masonry/jquery.masonry
 //= require masonry/jquery.infinitescroll.min
 //= require masonry/modernizr-transitions
@@ -23,20 +25,14 @@
 
 $(document).ready(function(){
   // disable auto discover
-  Dropzone.autoDiscover = false;
 
-  var dropzone = new Dropzone (".dropzone", {
-    maxFilesize: 256, // set the maximum file size to 256 MB
-    paramName: "photo[image]", // Rails expects the file upload to be something like model[field_name]
-    addRemoveLinks: false // dont show remove links on dropzone itself.
+  $.fn.editable.defaults.mode = 'inline';
+  $('.title').editable();
+  $('.description').editable();
+
+  $('a.info').click(function(e){
+    e.preventDefault();
   });
-
-  dropzone.on("success", function(file) {
-    this.removeFile(file);
-    $.getScript("/images");
-  });
-
-
 
 
 });

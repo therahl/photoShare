@@ -1,13 +1,23 @@
 <h1>Editing Photo</h1>
+<%= image_tag @photo.image.url(:large) %>
+
 <p>
-  Photo ID: <%= @photo.id %>
+  Photo ID:
+  <%= @photo.id %>
 </p>
+<a class="editable editable-click" data-name="title" data-original-title="Enter Title" data-pk="<%= @photo.id %>" data-resource="photo" data-type="text" data-url="<%= album_photo_path %>" href="#" id="title">
+  <%= @photo.title %>
+</a>
+
+<a class="editable editable-click" data-name="description" data-original-title="Enter Description" data-pk="<%= @photo.id %>" data-resource="photo" data-type="textarea" data-url="<%= album_photo_path %>" href="#" id="description">
+  <%= textarea_format(@photo.description) %>
+</a>
+
 
 <%= simple_form_for [@album, @photo] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.button :submit, "Submit", class: "btn btn-normal" %>
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.button :submit, "Submit", class: "btn btn-normal" %>
 <% end %>
 
-<%= link_to 'Show', album_photo_path %>
 <%= link_to 'Back', :back %>

@@ -1,5 +1,26 @@
-<% @photos.each do |image| %>
-  <div class="img-thumbnail">
-    <%= image_tag image.image.url(:thumb), alt: image.image.url(:thumb) %>
+<% @photos.order("image_updated_at desc").limit(20).each do |photo| %>
+
+<div class="brick pic has-gutters col<%= rand(1...5) %>">
+
+  <%= image_tag photo.image.url(:full), class: "img-responsive" %>
+  <div class="remove">
+    <span style="float: right; padding-right: 5px;"><%= link_to 'X', album_photo_path(id: photo), method: :delete %></span>
+    <span style="float: left; padding-left: 5px;"><%= link_to 'Edit', edit_album_photo_path(id: photo)%></span>
   </div>
+  <div class="info">
+      <h3>
+    <a class="editable editable-click title" data-name="title" data-original-title="Enter Title" data-pk="<%= @photo.id %>" data-resource="photo" data-type="text" data-url="<%= album_photo_path(id: photo) %>" href="#">
+        <%= photo.title || 'Click to add title' %>
+    </a>
+      </h3>
+
+    <span class="description">
+
+      <a class="editable editable-click description" data-name="description" data-rows="15" data-original-title="Enter Description" data-pk="<%= photo.id %>" data-resource="photo" data-type="textarea" data-url="<%= album_photo_path(id: photo) %>" href="#">
+        <%= simple_format(photo.description || "Add description...") %>
+      </a>
+
+    </span>
+  </div>
+</div>
 <% end %>

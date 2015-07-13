@@ -1,0 +1,64 @@
+
+$('#add-photos').click(function(){
+  $('.add-photos').toggleClass('hidden');
+  $(this).hide();
+})
+
+
+$('.info').hide();
+$('.remove').hide();
+
+$('.pic').hover(function(){
+    $(this).children('.remove').show();
+  },function(){
+    $('.remove').hide();
+})
+
+//load masonry after images are loaded
+$(document).imagesLoaded( function() {
+  var $grid = $('#masonry-container').isotope({
+        itemSelector: '.brick',
+        // columnWidth: 200,
+        // layoutMode: 'packery',
+        // gutterWidth: 10,
+        isAnimated: !Modernizr.csstransitions,
+        isFitWidth: true
+    });
+
+
+    $grid.on( 'click', 'img', function() {
+      $(this).parent().children('.info').toggle();
+      $(this).toggleClass('enlarge');
+      $grid.isotope();
+    });
+});
+
+//init dropzone
+Dropzone.autoDiscover = false;
+
+var dropzone = new Dropzone (".dropzone", {
+  maxFilesize: 256, // set the maximum file size to 256 MB
+  paramName: "photo[image]", // Rails expects the file upload to be something like model[field_name]
+  addRemoveLinks: false // dont show remove links on dropzone itself.
+});
+
+dropzone.on("success", function(file) {
+  this.removeFile(file);
+  $.getScript("./photos/");
+  $(document).imagesLoaded( function() {
+    var $grid = $('#masonry-container').isotope({
+          itemSelector: '.brick',
+          columnWidth: 200,
+          // gutterWidth: 10,
+          isAnimated: !Modernizr.csstransitions,
+          isFitWidth: true
+      });
+
+
+      $grid.on( 'click', '.pic', function() {
+        $(this).children('.info').toggle();
+        $(this).closest('.brick').toggleClass('enlarge');
+        $grid.isotope();
+      });
+  });
+});
