@@ -1,2 +1,16 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+
+
+<h1>Community Stories</h1>
+<% @albums.each do |album| %>
+<div class="photo-block">
+
+  <a href="<%= album_photos_path(album) %>">
+    <% unless album.photos.empty? %>
+      <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
+      <span class="welcome-info"><h3><%= album.title %></h3><p><%= album.description.truncate(40) %></p></span>
+    <% end %>
+  </a>
+</div>
+<% end %>
+</div>

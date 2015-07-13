@@ -15,7 +15,9 @@
 
         <tr>
           <a href="<%= album_photos_path(album) %>">
-            <% unless album.photos.empty? %>
+            <% if album.photos.empty? %>
+              <%= link_to "Add Photos", album_photos_path(album) %>
+            <% else %>
               <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
             <% end %>
           </a>
