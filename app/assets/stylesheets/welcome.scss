@@ -4,17 +4,15 @@
 .photo-block{
   display: inline-block;
   position: relative;
-  img {
     margin: 5px;
-  }
   .welcome-info{
     z-index: 2;
     display: block;
-    opacity: .8;
+    opacity: .6;
     background-color: aliceblue;
     text-align: center;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
   }
