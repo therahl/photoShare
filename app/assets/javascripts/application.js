@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require masonry/jquery.masonry
+//= require masonry/jquery.infinitescroll.min
+//= require masonry/modernizr-transitions
+//= require isotope/jquery.isotope
 //= require dropzone
 //= require_tree .
 
@@ -30,11 +34,9 @@ $(document).ready(function(){
   dropzone.on("success", function(file) {
     this.removeFile(file);
     $.getScript("/images");
-  })
+  });
+
+
+
+
 });
-// Parameters: {"utf8"=>"✓", "authenticity_token"=>"gPMejnvCQtE5mQkwVdJ8GHOtsoKJSjsHsVg14IB1gRLGVtz/g/buR1UO5d1SVt5PenkNfvaYApNcuWY1x6s8Kg==",
-// "photo"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fb6dec87bb0
-// @tempfile=#<Tempfile:/var/folders/68/91rl07y93n127bf852t7gdbr0000gn/T/RackMultipart20150625-3229-1kumf1m.jpeg>,
-// @original_filename="download (2).jpeg", @content_type="image/jpeg",
-// @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"download (2).jpeg\"\r\nContent-Type: image/jpeg\r\n">},
-// "commit"=>"Upload my Image", "album_id"=>"1"}

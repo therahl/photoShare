@@ -1,6 +1,13 @@
 <h1>Editing Photo</h1>
+<p>
+  Photo ID: <%= @photo.id %>
+</p>
 
-<%= render 'form' %>
+<%= simple_form_for [@album, @photo] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.button :submit, "Submit", class: "btn btn-normal" %>
+<% end %>
 
-<%= link_to 'Show', album_photo_path(id: photo) %>
-<%= link_to 'Back', photos_path %>
+<%= link_to 'Show', album_photo_path %>
+<%= link_to 'Back', :back %>
