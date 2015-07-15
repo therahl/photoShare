@@ -1,43 +1,33 @@
-<% provide :title, 'Stories' %>
-<p id="notice"><%= notice %></p>
+<div class="row">
 
-<h1>Your Stories</h1>
-<hr>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% provide :title, 'Stories' %>
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 
-  <tbody>
-    <% @albums.each do |album| %>
+  <%= link_to 'New Story', new_album_path, class: "btn btn-success" %>
+  <h1>Your Stories</h1>
+</div>
 
-        <tr>
-          <a href="<%= album_photos_path(album) %>">
-            <% if album.photos.empty? %>
-              <%= link_to "Add Photos", album_photos_path(album) %>
-            <% else %>
-              <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
-            <% end %>
-          </a>
-        </tr>
-        <tr>
-          <h3><%= album.title %></h3>
-        </tr>
-        <tr>
-          <p>
-            <%= album.description %>
-          </p>
-        </tr>
-      <tr>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Remove', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
 
-<br>
+  <% @albums.each do |album| %>
+    <div class="photo-block">
 
-<%= link_to 'New Story', new_album_path, class: "btn btn-success" %>
+      <a href="<%= album_photos_path(album) %>">
+        <% if album.photos.empty? %>
+        <%= link_to "Add Photos", album_photos_path(album) %>
+        <% else %>
+        <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
+        <% end %>
+      </a>
+      <h3><%= album.title %></h3>
+      <p>
+        <%= album.description %>
+      </p>
+      <%= link_to 'Edit', edit_album_path(album) %>
+      <%= link_to 'Remove', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+  <% end %>
+</div>

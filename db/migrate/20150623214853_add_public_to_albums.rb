@@ -1,5 +1,5 @@
 class AddPublicToAlbums < ActiveRecord::Migration
   def change
-    add_column :albums, :public, :boolean, :default => true
+    add_column :albums, :public, :boolean, :default => false
   end
 end

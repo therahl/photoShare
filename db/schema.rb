@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150710232544) do
   create_table "albums", force: :cascade do |t|
     t.string  "title"
     t.text    "description"
-    t.boolean "public",      default: true
+    t.boolean "public",      default: false
   end
 
   create_table "comments", force: :cascade do |t|
