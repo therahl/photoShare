@@ -13,10 +13,9 @@
 
   <% @albums.each do |album| %>
     <div class="photo-block">
-
       <a href="<%= album_photos_path(album) %>">
         <% if album.photos.empty? %>
-        <%= link_to "Add Photos", album_photos_path(album) %>
+        <%= link_to image_tag('placeholder.png', class: "img-responsive", style:"width: 300px;"), album_photos_path(album) %>
         <% else %>
         <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
         <% end %>

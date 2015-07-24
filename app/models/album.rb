@@ -4,8 +4,6 @@ class Album < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   validates :title, presence:true
 
-
-
   def title=(s)
     super s.titleize
   end
