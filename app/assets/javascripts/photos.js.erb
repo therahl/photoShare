@@ -31,13 +31,17 @@ $(document).imagesLoaded( function() {
       $(this).parent().children('.info').toggle();
       $(this).parent().toggleClass('enlarge');
       $grid.packery();
+      var location = $(this).offset();
+      $('body').animate({
+        scrollTop: location.top
+      }, 1000, 'swing');
     });
 });
 
 //init dropzone
 Dropzone.autoDiscover = false;
 
-var dropzone = new Dropzone (".dropzone", {
+var dropzone = new Dropzone(".dropzone", {
   maxFilesize: 256, // set the maximum file size to 256 MB
   paramName: "photo[image]", // Rails expects the file upload to be something like model[field_name]
   addRemoveLinks: false // dont show remove links on dropzone itself.
