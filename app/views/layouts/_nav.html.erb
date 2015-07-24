@@ -1,22 +1,38 @@
+<!-- Sidebar -->
+<div class="nav nav-bar" id="sidebar-wrapper">
+  <ul class="sidebar-nav nav nav-pills nav-stacked">
+    <li class="sidebar-brand">
+      <a href="#">
+        StoryShare
+      </a>
+    </li>
+    <% if user_signed_in? %>
+    <li>
+      <a href="<%= albums_path %>">Your Stories</a>
+    </li>
+    <li>
+      <a href="<%= new_album_path %>">New Story</a>
+    </li>
+    <li>
+      <a href="<%= root_path %>">Explore</a>
+    </li>
+    <li>
+      <%= link_to 'Sign Out', logout_path %>
+    </li>
 
-       <!-- Sidebar -->
-       <div class="nav nav-bar" id="sidebar-wrapper">
-           <ul class="sidebar-nav nav nav-pills nav-stacked">
-               <li class="sidebar-brand">
-                   <a href="#">
-                       StoryShare
-                   </a>
-               </li>
-               <li>
-                   <a href="<%= albums_path %>">Your Stories</a>
-               </li>
-               <li>
-                   <a href="<%= new_album_path %>">New Story</a>
-               </li>
-               <li>
-                   <a href="<%= root_path %>">Explore</a>
-               </li>
+    <% else %>
+    <li>
+      <%= link_to 'Sign In', login_path %>
 
-           </ul>
-       </div>
-       <!-- /#sidebar-wrapper -->
+    </li>
+    <li>
+      <%= link_to 'Sign Up', new_user_path %>
+    </li>
+    <li>
+      <a href="<%= root_path %>">Explore</a>
+    </li>
+    <% end %>
+
+  </ul>
+</div>
+<!-- /#sidebar-wrapper -->
