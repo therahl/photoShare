@@ -24,8 +24,8 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
-
+    @user = current_user
+    @album = @user.albums.new(album_params)
     respond_to do |format|
       if @album.save
         format.html { redirect_to albums_path, notice: 'Album was successfully created.' }
@@ -64,6 +64,7 @@ class AlbumsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_album
+
       @album = Album.find(params[:id])
     end
 

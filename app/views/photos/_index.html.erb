@@ -4,8 +4,7 @@
 
   <%= image_tag photo.image.url(:full), class: "img-responsive" %>
   <div class="remove">
-    <span style="float: right; padding-right: 5px;"><%= link_to 'X', album_photo_path(id: photo), method: :delete %></span>
-    <span style="float: left; padding-left: 5px;"><%= link_to 'Edit', edit_album_photo_path(id: photo)%></span>
+    <span><%= link_to 'Remove', album_photo_path(id: photo), method: :delete %></span>
   </div>
   <div class="info">
       <h3>

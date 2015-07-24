@@ -1,3 +1,4 @@
+//= require 'packery'
 
 $('#add-photos').click(function(){
   $('.add-photos').toggleClass('hidden');
@@ -16,7 +17,7 @@ $('.pic').hover(function(){
 
 //load masonry after images are loaded
 $(document).imagesLoaded( function() {
-  var $grid = $('#masonry-container').isotope({
+  var $grid = $('#masonry-container').packery({
         itemSelector: '.brick',
         // columnWidth: 200,
         // layoutMode: 'packery',
@@ -28,8 +29,8 @@ $(document).imagesLoaded( function() {
 
     $grid.on( 'click', 'img', function() {
       $(this).parent().children('.info').toggle();
-      $(this).toggleClass('enlarge');
-      $grid.isotope();
+      $(this).parent().toggleClass('enlarge');
+      $grid.packery();
     });
 });
 
