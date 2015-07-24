@@ -1,16 +1,18 @@
 <div class="row">
 
+  <h1>Community Stories</h1>
+  <% @albums.each do |album| %>
+  <% unless album.photos.empty? %>
+  <div class="photo-block">
 
-<h1>Community Stories</h1>
-<% @albums.each do |album| %>
-<div class="photo-block">
-
-  <a href="<%= album_photos_path(album) %>">
-    <% unless album.photos.empty? %>
+    <a href="<%= album_photos_path(album) %>">
       <%= image_tag album.photos.last.image.url(:medium), class: "img-responsive" %>
-      <span class="welcome-info"><h3><%= album.title %></h3><p><%= album.description.truncate(40) %></p></span>
-    <% end %>
-  </a>
-</div>
-<% end %>
+      <span class="welcome-info">
+        <h3><%= album.title %></h3>
+        <p><%= album.description.truncate(40) %></p>
+      </span>
+    </a>
+  </div>
+  <% end %>
+  <% end %>
 </div>

@@ -3,9 +3,6 @@
 <div class="brick pic has-gutters col<%= rand(1...5) %>">
 
   <%= image_tag photo.image.url(:full), class: "img-responsive" %>
-  <div class="remove">
-    <span><%= link_to 'Remove', album_photo_path(id: photo), method: :delete %></span>
-  </div>
   <div class="info">
       <h3>
         <%= photo.title || 'No title' %>

@@ -7,18 +7,18 @@
   <%= @album.description %>
 </p>
 <hr>
-
+<% if current_user && current_user.id == @album.user_id %>
 <p>
-
  <button type="btn btn-success" name="button" id="add-photos">Add Photos</button>
 </p>
 <div class="add-photos hidden">
   <%= render 'form' %>
 </div>
+<% end %>
 <div class="grid">
 
 <div id="masonry-container" class="">
-  <% if current_user.id == @album.user_id %>
+  <% if current_user && current_user.id == @album.user_id %>
 
   <%= render 'index' %>
   <% else %>
